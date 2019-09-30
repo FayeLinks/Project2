@@ -1,33 +1,66 @@
-<div id="home">
-  <div class="container">
-    <div class="row">
-      <div class="col-8 offset-2">
-        <h1>{{msg}}</h1>
-        <h2>This is our Home Page!</h2>
-        <form class="clearfix mb-4" action="POST">
-          <div class="form-group">
-            <label for="example-text">Example Text</label>
-            <input type="text" id="example-text" class="form-control" aria-describedby="example-text" placeholder="Enter Example Text">
-          </div>
-          <div class="form-group">
-            <label for="example-description">Example Description</label>
-            <textarea class="form-control" id="example-description" aria-describedby="example-description" placeholder="Enter Example Description"></textarea>
-          </div>
-          <button id="submit" class="btn btn-primary float-right">Submit</button>
-        </form>
-        <h3>Examples:</h3>
-        <ul id="example-list" class="list-group">
-          {{#each examples}}
-          <li data-id="{{this.id}}" class="list-group-item">
-            <a href="example/{{this.id}}">{{this.text}}</a>
-            <button class="btn btn-danger float-right delete">ｘ</button>
-          </li>
-          {{/each}}
-        </ul>
-      </div>
+{{!-- Book of the month suggestion form  --}}
+<form id="bom-form">
+    <h3>Submit your choice for book of the month!</h3>
+    <div class="grid-x">
+        <div class="medium-6 cell">
+            <label>Title
+                <input id="bom-title" type="text">
+            </label>
+        </div>
+        <div class="medium-6 cell">
+            <label>Author
+                <input id="bom-author" type="text">
+            </label>
+        </div>
     </div>
-  </div>
+
+    <!-- script for character count  -->
+    <script>
+        function countChar(val) {
+            var len = val.value.length;
+            if (len >= 500) {
+                val.value = val.value.substring(0, 500);
+            } else {
+                $('#charNum').text(500 - len + " characters remaining");
+            }
+        };
+    </script>
+
+    {{!-- input field  --}}
+    <label id="summary-label">
+        Why does this book deserve book of the month?
+        <textarea onkeyup="countChar(this)" id="bom-summary" placeholder="500 characters maximum"></textarea>
+    </label>
+    <!-- div where the character count is dynamically created and updated  -->
+    <div id="charNum">
+    </div>
+
+    <button type="button" class="success button submit-btn">Submit</button>
+</form>
+
+{{!-- Calender  --}}
+<div class="grid-x">
+    {{!-- calender title  --}}
+    <div class="cell cal-title">
+        <h3>Check out upcoming meetings and events!</h3>
+        <h6>click <a
+                href="https://calendar.google.com/calendar/r?cid=eos6vaflufesot5vmuhilucqcg@group.calendar.google.com&cid=en.usa%23holiday@group.v.calendar.google.com"><img
+                    id="add-logo" src="https://i.imgur.com/hniv8M1.png"></a> to add an event of your own with your
+            google accountt</h6>
+    </div>
+    {{!-- cell containing calender in "iframe" --}}
+    <div class="cell">
+        <iframe id="calender"
+            src="https://calendar.google.com/calendar/embed?height=500&amp;wkst=1&amp;bgcolor=%23ffffff&amp;ctz=America%2FNew_York&amp;src=ZW9zNnZhZmx1ZmVzb3Q1dm11aGlsdWNxY2dAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&amp;src=ZW4udXNhI2hvbGlkYXlAZ3JvdXAudi5jYWxlbmRhci5nb29nbGUuY29t&amp;color=%23AD1457&amp;color=%230B8043"
+            style="border-width:0" width="700" height="500" frameborder="0" scrolling="no"></iframe>
+    </div>
+</div>
 </div>
 
+
+
+
+
+<!-- scripts -->
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="/js/index.js"></script>

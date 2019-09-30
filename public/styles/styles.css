@@ -1,3 +1,53 @@
-.list-group-item {
-  line-height: 2.5;
+
+#bom-form {
+  text-align: center;
+}
+
+#bom-summary {
+  width: 100%;
+}
+
+#bom-title {
+  width: 75%;
+  margin: 0 auto 0 auto;
+  text-align: center;
+}
+
+#bom-author {
+  width: 75%;
+  margin: 0 auto 0 auto;
+  text-align: center;
+}
+
+#summary-label {
+  margin-top: 3%;
+}
+
+#bom-summary {
+  margin: 0 auto 0 auto;
+  width: 60%;
+}
+
+#charNum {
+  font-size: 60%;
+}
+
+.submit-btn {
+  margin-top: 3%;
+}
+
+
+.cal-title {
+  margin-top: 3%;
+  text-align: center;
+}
+
+#add-logo {
+  width: 10%;
+}
+
+
+#calender {
+ display: block;
+ margin: 0 auto 0 auto;
 }
