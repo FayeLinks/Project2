@@ -11,10 +11,10 @@ module.exports = function(app) {
     });
   });
 
-  // Load example page and pass in an example by id
-  app.get("/example/:id", function(req, res) {
+  // Load the contact page
+  app.get("/contact", function(req, res) {
     db.Example.findOne({ where: { id: req.params.id } }).then(function(dbExample) {
-      res.render("example", {
+      res.render("contact", {
         example: dbExample
       });
     });
