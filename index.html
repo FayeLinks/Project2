@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+
+<html class="no-js" lang="en">
+
+<head>
+    <meta charset="utf-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Club</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/5.5.3/css/normalize.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/5.5.3/css/foundation.min.css">
+    <link href='https://cdnjs.cloudflare.com/ajax/libs/foundicons/3.0.0/foundation-icons.css' rel='stylesheet'
+        type='text/css'>
+
+    <link rel="stylesheet" href="assets\css\style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
+
+</head>
+
+<body>
+    <!-- Navigation -->
+    <div class="row">
+        <div class="large-3 columns">
+            <h1><img src="https://placehold.it/400x100&text=Logo" /></h1>
+        </div>
+        <div class="large-9 columns">
+            <ul class="right button-group">
+                <li><a href="#" class="button">Home</a></li>
+                <li><a href="#meetings" class="button">Meetings</a></li>
+                <li><a href="#calendar" class="button">Calendar</a></li>
+                <li><a href="#contact" class="button">Contact Us</a></li>
+            </ul>
+        </div>
+    </div>
+
+<!-- Orbit animation -->
+    <div class="row">
+        <div class="large-12 columns">
+            <ul class="container-orbit" data-orbit>
+
+
+                <li><img class="orbit-images" src="assets\images\antique.jpg">
+                    <div class="caption"><br>Sign up now!</div>
+
+                </li>
+
+
+                <li><img class="orbit-images" src="assets\images\bookcase.jpg">
+                    <div class="caption"><br>Book of the month: October </div>
+                </li>
+
+
+                <li><img class="orbit-images" src="assets\images\ladder.jpg">
+                    <div class="caption"><br>Previous book of the month! </div>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+
+<!-- 3 col, extra info  -->
+    <div class="row">
+        <div class="large-4 columns">
+            <img src="assets\images\bookOpen.jpg" />
+            <h4>Books are great!</h4>
+            <p>Bacon ipsum dolor sit amet nulla ham qui sint exercitation eiusmod commodo, chuck duis velit. Aute in
+                reprehenderit, dolore aliqua non est magna in labore pig pork biltong. Eiusmod swine spare ribs
+                reprehenderit culpa. Boudin aliqua adipisicing rump corned beef.</p>
+        </div>
+        <div class="large-4 columns">
+            <img src="assets\images\friends.jpg" />
+            <h4>Why should you join?</h4>
+            <p>Bacon ipsum dolor sit amet nulla ham qui sint exercitation eiusmod commodo, chuck duis velit. Aute in
+                reprehenderit, dolore aliqua non est magna in labore pig pork biltong. Eiusmod swine spare ribs
+                reprehenderit culpa. Boudin aliqua adipisicing rump corned beef.</p>
+        </div>
+        <div class="large-4 columns">
+            <img class = "team" src="assets\images\team.jpg" />
+            <h4>Brains behind the books</h4>
+            <p>Bacon ipsum dolor sit amet nulla ham qui sint exercitation eiusmod commodo, chuck duis velit. Aute in
+                reprehenderit, dolore aliqua non est magna in labore pig pork biltong. Eiusmod swine spare ribs
+                reprehenderit culpa. Boudin aliqua adipisicing rump corned beef.</p>
+        </div>
+    </div>
+    <hr />
+<!-- Placeholder for meetings -->
+    <div class="row">
+        <div class="large-12 columns">
+
+            <img src="https://placehold.it/400x300&text=[img]" />
+
+            <h4 id = "meetings">this space is for the meeting things and all the things</h4>
+
+
+        </div>
+    </div>
+<!-- Placeholder for calendar -->
+    <div class="row">
+        <div class="large-12 columns">
+
+            <img src="https://placehold.it/400x300&text=[img]" />
+
+            <h4 id = "calendar">this space is for the calendar things and all the things</h4>
+
+
+        </div>
+    </div>
+
+<!-- 
+Contact us section -->
+    <div class="row">
+        <div class="large-12 columns">
+            <div class="panel">
+                <h4>Get in touch!</h4>
+                <div class="row">
+                    <div class="large-9 columns">
+                        <p id = "contact">We'd love to hear from you, you attractive person you.</p>
+                    </div>
+                    <div class="large-3 columns">
+                        <a href="contactus.html" class="radius button right">Contact Us</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<!-- Footer with placeholder link just in case -->
+    <footer class="row">
+        <div class="large-12 columns">
+            <hr />
+            <div class="row">
+                <div class="large-6 columns">
+                    <p>&copy; Copyright</p>
+                </div>
+                <div class="large-6 columns">
+                    <ul class="inline-list right">
+                        <li><a href="#">Link 1</a></li>
+                    
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JS for orbit using foundation -->
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/foundation/5.5.3/js/foundation.min.js"></script>
+    <script>
+
+        $(document).foundation({
+            orbit: {
+                animation: 'fade',
+                timer_speed: 4500,
+                pause_on_hover: true,
+                resume_on_mouseout: true,
+                animation_speed: 1500,
+                navigation_arrows: true,
+                bullets: true,
+                circular: true,
+                swipe: true,
+            }
+        });
+
+
+    </script>
+</body>
+
+</html>

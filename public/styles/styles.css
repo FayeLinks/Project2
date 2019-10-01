@@ -1,3 +1,63 @@
-.list-group-item {
-  line-height: 2.5;
-}
+body{
+
+  background: #f2f2f2;
+  
+  
+  }
+  
+  .button{
+  color: white;
+  
+  }
+  /* Orbit CSS */
+  .container-orbit {
+      position: relative;
+      width: 1000px;
+      height: 600px;
+    }
+  
+    /* CSS for text overlay in Orbit */
+    .caption {
+      position: absolute;
+      width: 1000px;
+      height: 90px;
+      bottom: 130px;
+      top: auto;
+      left: 0px;
+      color: white;
+      background:#1779ba;
+      text-align:center;
+      font-size: 20px;
+      font-weight:bold;
+      opacity:0.7;
+    }
+  
+  
+  /* Orbit image height */
+  .orbit-images{
+  
+      height: 600px;
+      width: 1000px;
+  
+  }
+  
+  .orbit-caption{
+  
+  font-size: 200px;
+  
+  }
+  
+  /* Change height of team image */
+  .team {
+  
+      height: 205px;
+  
+  }
+  
+  /* Contact us page centering header */
+  #contactUsPage {
+  
+      text-align: center;
+  
+  }
+  

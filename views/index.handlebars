@@ -1,33 +1,178 @@
-<div id="home">
-  <div class="container">
-    <div class="row">
-      <div class="col-8 offset-2">
-        <h1>{{msg}}</h1>
-        <h2>This is our Home Page!</h2>
-        <form class="clearfix mb-4" action="POST">
-          <div class="form-group">
-            <label for="example-text">Example Text</label>
-            <input type="text" id="example-text" class="form-control" aria-describedby="example-text" placeholder="Enter Example Text">
-          </div>
-          <div class="form-group">
-            <label for="example-description">Example Description</label>
-            <textarea class="form-control" id="example-description" aria-describedby="example-description" placeholder="Enter Example Description"></textarea>
-          </div>
-          <button id="submit" class="btn btn-primary float-right">Submit</button>
-        </form>
-        <h3>Examples:</h3>
-        <ul id="example-list" class="list-group">
-          {{#each examples}}
-          <li data-id="{{this.id}}" class="list-group-item">
-            <a href="example/{{this.id}}">{{this.text}}</a>
-            <button class="btn btn-danger float-right delete">ｘ</button>
-          </li>
-          {{/each}}
-        </ul>
-      </div>
+<!-- Navigation -->
+<div class="row">
+  <div class="large-3 columns">
+    <h1><img src="https://placehold.it/400x100&text=Logo" /></h1>
+  </div>
+  <div class="large-9 columns">
+    <ul class="right button-group">
+      <li><a href="#" class="button">Home</a></li>
+      <li><a href="#meetings" class="button">Meetings</a></li>
+      <li><a href="#calendar" class="button">Calendar</a></li>
+      <li><a href="#contact" class="button">Contact Us</a></li>
+    </ul>
+  </div>
+</div>
+
+<!-- Orbit animation -->
+<div class="row">
+  <div class="large-12 columns">
+    <ul class="container-orbit" data-orbit>
+
+
+      <li><img class="orbit-images" src="public\images\antique.jpg">
+        <div class="caption"><br>Sign up now!</div>
+
+      </li>
+
+
+      <li><img class="orbit-images" src="https://placehold.it/400x300&text=[img]">
+        <div class="caption"><br>Book of the month: October </div>
+      </li>
+
+
+      <li><img class="orbit-images" src="https://placehold.it/400x300&text=[img]">
+        <div class="caption"><br>Previous book of the month! </div>
+      </li>
+
+    </ul>
+  </div>
+</div>
+
+<!-- 3 col, extra info  -->
+<div class="row">
+  <div class="large-4 columns">
+    <img src="assets\images\bookOpen.jpg" />
+    <h4>Books are great!</h4>
+    <p>Bacon ipsum dolor sit amet nulla ham qui sint exercitation eiusmod commodo, chuck duis velit. Aute in
+      reprehenderit, dolore aliqua non est magna in labore pig pork biltong. Eiusmod swine spare ribs
+      reprehenderit culpa. Boudin aliqua adipisicing rump corned beef.</p>
+  </div>
+  <div class="large-4 columns">
+    <img src="assets\images\friends.jpg" />
+    <h4>Why should you join?</h4>
+    <p>Bacon ipsum dolor sit amet nulla ham qui sint exercitation eiusmod commodo, chuck duis velit. Aute in
+      reprehenderit, dolore aliqua non est magna in labore pig pork biltong. Eiusmod swine spare ribs
+      reprehenderit culpa. Boudin aliqua adipisicing rump corned beef.</p>
+  </div>
+  <div class="large-4 columns">
+    <img class="team" src="assets\images\team.jpg" />
+    <h4>Brains behind the books</h4>
+    <p>Bacon ipsum dolor sit amet nulla ham qui sint exercitation eiusmod commodo, chuck duis velit. Aute in
+      reprehenderit, dolore aliqua non est magna in labore pig pork biltong. Eiusmod swine spare ribs
+      reprehenderit culpa. Boudin aliqua adipisicing rump corned beef.</p>
+  </div>
+</div>
+<hr />
+
+<div class="row">
+  <div class="large-12 columns">
+
+    <img src="https://placehold.it/400x300&text=[img]" />
+
+    <h4 id="meetings">this space is for the meeting things and all the things</h4>
+
+    <script>
+
+      //This is the axios get method to the Google Books API to produce the book of the month
+
+      $.get("https://www.googleapis.com/books/v1/volumes?q=subject:fiction+inauthor:rowling&key=AIzaSyANAvNRCQ95S0TuXsGL9G_-TZ9RYsywtaA")
+        .done(function (books) {
+          // $("#book-month").text(books.items[0].volumeInfo.title);
+        });
+    </script>
+
+    <div id="book-month">
+      <h1>Book of the month</h1>
+      {{!-- <img src= {{this.book.volumeInfo.imageLinks}}> --}}
+      <h2>Title: {{this.book.volumeInfo.title}}</h2>
+      <h2>Authors: {{this.book.volumeInfo.authors}}</h2>
+      <h2>Genre: {{this.book.volumeInfo.categories}}</h2>
+      <h2>5 Star Rating: {{this.book.volumeInfo.averageRating}}</h2>
+      <p>{{this.book.volumeInfo.description}}</p>
+
     </div>
   </div>
 </div>
 
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script src="/js/index.js"></script>
+
+
+
+<!-- Placeholder for meetings -->
+<div class="row">
+  <div class="large-12 columns">
+
+    <img src="https://placehold.it/400x300&text=[img]" />
+
+    <h4 id="meetings">this space is for the meeting things and all the things</h4>
+
+
+  </div>
+</div>
+<!-- Placeholder for calendar -->
+<div class="row">
+  <div class="large-12 columns">
+
+    <img src="https://placehold.it/400x300&text=[img]" />
+
+    <h4 id="calendar">this space is for the calendar things and all the things</h4>
+
+
+  </div>
+</div>
+
+<!-- 
+Contact us section -->
+<div class="row">
+  <div class="large-12 columns">
+    <div class="panel">
+      <h4>Get in touch!</h4>
+      <div class="row">
+        <div class="large-9 columns">
+          <p id="contact">We'd love to hear from you, you attractive person you.</p>
+        </div>
+        <div class="large-3 columns">
+          <a href="/contact" class="radius button right">Contact Us</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Footer with placeholder link just in case -->
+<footer class="row">
+  <div class="large-12 columns">
+    <hr />
+    <div class="row">
+      <div class="large-6 columns">
+        <p>&copy; Copyright</p>
+      </div>
+      <div class="large-6 columns">
+        <ul class="inline-list right">
+          <li><a href="#">Link 1</a></li>
+
+        </ul>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- JS for orbit using foundation -->
+<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/foundation/5.5.3/js/foundation.min.js"></script>
+<script>
+
+  $(document).foundation({
+    orbit: {
+      animation: 'fade',
+      timer_speed: 4500,
+      pause_on_hover: true,
+      resume_on_mouseout: true,
+      animation_speed: 1500,
+      navigation_arrows: true,
+      bullets: true,
+      circular: true,
+      swipe: true,
+    }
+  });
+
+
+</script>
