@@ -1,33 +1,214 @@
-<div id="home">
-  <div class="container">
-    <div class="row">
-      <div class="col-8 offset-2">
-        <h1>{{msg}}</h1>
-        <h2>This is our Home Page!</h2>
-        <form class="clearfix mb-4" action="POST">
-          <div class="form-group">
-            <label for="example-text">Example Text</label>
-            <input type="text" id="example-text" class="form-control" aria-describedby="example-text" placeholder="Enter Example Text">
-          </div>
-          <div class="form-group">
-            <label for="example-description">Example Description</label>
-            <textarea class="form-control" id="example-description" aria-describedby="example-description" placeholder="Enter Example Description"></textarea>
-          </div>
-          <button id="submit" class="btn btn-primary float-right">Submit</button>
-        </form>
-        <h3>Examples:</h3>
-        <ul id="example-list" class="list-group">
-          {{#each examples}}
-          <li data-id="{{this.id}}" class="list-group-item">
-            <a href="example/{{this.id}}">{{this.text}}</a>
-            <button class="btn btn-danger float-right delete">ｘ</button>
-          </li>
-          {{/each}}
-        </ul>
-      </div>
+{{!-- !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! --}}
+<!-- Links for the <head> in main.handlelbars  -->
+<link rel="stylesheet" href="/styles/reset.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/5.5.3/css/normalize.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.5.3/css/foundation.css">
+<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/styles/styles.css">
+{{!-- delete or comment out the links after pasting them to the main :))) --}}
+{{!-- !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! --}}
+
+
+<!-- page container  -->
+<div class="grid-container page-body">
+    <!-- nav bar -->
+    <div class="grid-x">
+        <div class="cell large-6">
+            <img id="logo" src="https://i.imgur.com/y4avFLY.png">
+        </div>
+        <div class="cell large-6">
+            <ul class="menu align-right">
+                <li><a href="#bom">Book of the Month</a></li>
+                <li><a href="#bom-form">Submit</a></li>
+                <li><a href="#calender">Calender</a></li>
+                <li><a href="#contact">contact</a></li>
+                <li><a href="/logout">Logout</a></li>
+            </ul>
+        </div>
     </div>
-  </div>
+    <!-- orbit  / splash image for now-->
+    <div id="splash-img">
+        <img src="https://i.imgur.com/ZKxLlm3.jpg" alt="a beatiful old library">
+    </div>
+    <!-- book club benefits tiles  -->
+    <div class="grid-x">
+        <div class="large-4 columns benefits">
+            <img src="https://i.imgur.com/Fk0aLfu.jpg" id="ben-img" />
+            <h4 class="card-title">New worlds await!</h4>
+            <p>Books offer just as much drama, excitement, emotion, and entertainment as video games and television!
+                There are more books than there are tv shows
+                or games, so the selection is nearly endless. Taking an adventure, falling in love, or learning
+                something new.. These are all possible with the power
+                of books!
+            </p>
+        </div>
+        <div class="large-4 columns benefits">
+            <img src="https://i.imgur.com/CGxsQz8.jpg" id="ben-img" />
+            <h4 class="card-title">Reading is social!</h4>
+            <p>You don't have to be an old spinster or depressed widower or any other type of loner to enjoy books!
+                Part of the fun is meeting up with your friends
+                and discussing how you enjoyed the book (if you even did at all!). Sharing your thoughts about what
+                you read, and listening to that of others
+                helps form stronger relationships with those people. You might be surprised what you learn about
+                each other!
+            </p>
+        </div>
+        <div class="large-4 columns benefits">
+            <img class="team" src="https://i.imgur.com/YaCyJqN.jpg" id="ben-img" />
+            <h4 class="card-title">Expand your mind!</h4>
+            <p>Reading tickles a part of your cranium not oft stimulated these days. Honing one's ability to
+                comprehend information given from books, whether
+                in the form of a fact or narrative, really helps sharpen your mind! Using your imagination to create
+                worlds only described by words will help
+                restore your creativity of your youth. There's no reason not to read!</p>
+        </div>
+    </div>
+    <hr />
+    <!-- rendering of Book of month ajax call  -->
+    <script>
+        $.get("https://www.googleapis.com/books/v1/volumes?q=subject:fiction+inauthor:rowling&key=AIzaSyANAvNRCQ95S0TuXsGL9G_-TZ9RYsywtaA")
+            .done(function (books) {
+                // $("#book-month").text(books.items[0].volumeInfo.title);
+            });
+    </script>
+    <div class="grid-x">
+        <div class="large-12 cell bom" id="bom">
+            <div id="book-month">
+                <h5>Book of the month</h5>
+                <H6>Title: {{this.book.volumeInfo.title}}</H6>
+                <H6>Authors: {{this.book.volumeInfo.authors}}</H6>
+                <H6>Genre: {{this.book.volumeInfo.categories}}</H6>
+                <H6>5 Star Rating: {{this.book.volumeInfo.averageRating}}</H6>
+                <p>{{this.book.volumeInfo.description}}</p>
+            </div>
+        </div>
+    </div>
+    <hr />
+    <script>
+
+        //This is the axios get method to the Google Books API to produce the book of the month
+
+        $.get("https://www.googleapis.com/books/v1/volumes?q=subject:fiction+inauthor:rowling&key=AIzaSyANAvNRCQ95S0TuXsGL9G_-TZ9RYsywtaA")
+            .done(function (books) {
+                // $("#book-month").text(books.items[0].volumeInfo.title);
+            });
+    </script>
+
+    <!-- book of the month submission form  -->
+    <form id="bom-form">
+        <h5>Read anything great lately? Please let us know by submitting your case for the next book of the month
+        </h5>
+        <div class="grid-x">
+            <div class="medium-6 cell">
+                <label>Title
+                    <input id="bom-title" type="text">
+                </label>
+            </div>
+            <div class="medium-6 cell">
+                <label>Author
+                    <input id="bom-author" type="text">
+                </label>
+            </div>
+        </div>
+        <!-- script for character count  -->
+        <script>
+            function countChar(val) {
+                var len = val.value.length;
+                if (len >= 500) {
+                    val.value = val.value.substring(0, 500);
+                } else {
+                    $('#charNum').text(500 - len + " characters remaining");
+                }
+            };
+        </script>
+        <label id="summary-label">
+            Why does this book deserve book of the month?
+            <textarea onkeyup="countChar(this)" id="bom-summary" placeholder="500 characters maximum"></textarea>
+        </label>
+        <!-- div where the character count is dynamically created and updated  -->
+        <div id="charNum">
+        </div>
+        <button type="button" class="success button submit-btn">Submit</button>
+    </form>
+    <hr>
+    <!-- google calender div  -->
+    <div class="grid-x" id="calender">
+        <div class="cell cal-title">
+            <h4>Check out upcoming meetings and events!</h4>
+            <h6>click <a
+                    href="https://calendar.google.com/calendar/r?cid=eos6vaflufesot5vmuhilucqcg@group.calendar.google.com&cid=en.usa%23holiday@group.v.calendar.google.com"><img
+                        id="add-logo" src="https://i.imgur.com/hniv8M1.png"></a> to book a book club meeting of your
+                own using your google account</h6>
+        </div>
+        <div class="cell">
+            <iframe id="calender"
+                src="https://calendar.google.com/calendar/embed?height=500&amp;wkst=1&amp;bgcolor=%23ffffff&amp;ctz=America%2FNew_York&amp;src=ZW9zNnZhZmx1ZmVzb3Q1dm11aGlsdWNxY2dAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&amp;src=ZW4udXNhI2hvbGlkYXlAZ3JvdXAudi5jYWxlbmRhci5nb29nbGUuY29t&amp;color=%23AD1457&amp;color=%230B8043"
+                style="border-width:0" width="900" height="700" frameborder="0" scrolling="no"></iframe>
+        </div>
+    </div>
+    <hr>
+    <!-- contact page link   -->
+    <div class="grid-x" id="contact">
+        <div class="large-12 columns">
+            <div class="panel">
+                <h4>Get in touch!</h4>
+                <div class="row">
+                    <div class="large-9 columns">
+                        <p id="contact">We'd love to hear from you, you attractive person you.</p>
+                    </div>
+                    <div class="large-3 columns contactbtn">
+                        <a href="/contact" class="radius button right">Contact Us</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- grid container end div    -->
 </div>
 
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script src="/js/index.js"></script>
+<!-- We will also have to link the javascript for the Book of the month suggestion POST  -->
+
+<script>
+    $(document).ready(function () {
+        //declaring variables for our inputs
+        var $title = $("input#bom-title");
+        var $author = $("input#bom-author");
+        var $summary = $("textarea#bom-summary");
+        var $button = $(".success");
+        //event listner for submit
+        $button.on("click", insertBOM);
+        // inserts a new BOM into the db
+        function insertBOM(event) {
+            event.preventDefault();
+            var bom = {
+                title: $title.val().trim(),
+                author: $author.val().trim(),
+                summary: $summary.val()
+            };
+            console.log(bom);
+            $.post("/api/bom", bom);
+            // clear input fields
+            $title.val("");
+            $author.val("");
+            $summary.val("");
+        }
+    });
+    // handleFormSubmit is called whenever we submit a new example
+    // Save the new example to the db and refresh the list
+    //if (!(bom.author && bom.title)) {
+       // alert("You must enter the Authors name and Title!");
+        //return;
+    //}
+
+    //API.saveExample(bom).then(function () {
+       // refreshExamples();
+    //});
+
+    // $author.val("");
+    //$title.val("");
+    // handleDeleteBtnClick is called when an example's delete button is clicked
+    // Remove the example from the db and refresh the list
+
+    // Add event listeners to the submit and delete buttons
+    // $submitBtn.on("click", handleFormSubmit);
+</script>
