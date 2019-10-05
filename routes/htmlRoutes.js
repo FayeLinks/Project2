@@ -39,6 +39,11 @@ module.exports = function (app) {
 
   });
 
+  // route for the contact us page
+  app.get("/contact", sessionChecker, (req, res) => {
+    res.render("contact", {hbsContent});
+  });
+
 //  route for user signup
 app.route("/signup")
     .get((req, res) => {

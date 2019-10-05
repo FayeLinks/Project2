@@ -42,11 +42,12 @@ app.set("view engine", "handlebars");
 
 // Routes
 require("./routes/authRoutes")(app);
+require("./routes/apiRoutes")(app);
 require("./routes/htmlRoutes")(app);
 
 // route for handling 404 requests(unavailable routes)
-app.use(function (req, res, next) {
-  res.status(404).send("Sorry can't find that!")
+app.use(function (req, res) {
+  res.status(404).send("Sorry I can't find that!");
 });
 
 var syncOptions = { force: false };

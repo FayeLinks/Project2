@@ -22,7 +22,7 @@ app.route("/signup")
       console.log(user.dataValues);
       console.log(req.session);
       req.session.user = user.dataValues;
-      res.redirect("/index");
+      res.redirect("/");
     })
     .catch(error => {
       console.log(error);
