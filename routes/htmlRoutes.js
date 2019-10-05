@@ -8,7 +8,7 @@ var axios = require("axios");
 var hbsContent = { userName: "", loggedin: false, title: "You are not logged in today", body: "Hello World" };
 
 // middleware function to check for logged in users
-var sessionChecker = (req, res, next) => {
+var sessionChecker =(req, res, next) => {
   console.log(req.session);
   if (req.session.user && req.cookies.user_sid) {
     next();
